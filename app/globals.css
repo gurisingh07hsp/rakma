@@ -898,16 +898,31 @@ body {
 /* ── RESPONSIVE ── */
 @media (max-width: 960px) {
   .nav { padding: 14px 22px; }
+  .nav.scrolled { padding: 10px 22px; }
   .nav-links { display: none; }
-  .section, .props-section, .stats-section, .cta-section, .footer { padding-left: 22px !important; padding-right: 22px !important; }
-  .hero-wrap { grid-template-columns: 1fr; }
-  .hero-right { height: 300px; }
-  .hero-stats { flex-wrap: wrap; gap: 16px; }
+  .section, .props-section, .stats-section, .cta-section, .footer { padding: 80px 22px !important; }
+  .container { padding: 0 22px; }
+  .hero-wrap { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 120px 22px 60px; }
+  .hero-right { height: 350px; order: -1; }
+  .hero-vid-overlay { background: linear-gradient(to top, var(--bg) 0%, transparent 40%); }
+  .hero-stats { flex-wrap: wrap; gap: 24px; justify-content: flex-start; }
   .hstat { border-right: none; padding: 0; margin: 0; }
-  .vis-grid, .how-layout, .story-wrap, .cta-inner { grid-template-columns: 1fr; gap: 40px; }
-  .feat-grid, .why-grid, .testi-grid, .insights-grid, .props-grid { grid-template-columns: 1fr; }
-  .stats-grid, .footer-grid, .modal-stats { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .vis-grid, .how-layout, .story-wrap, .cta-inner { grid-template-columns: 1fr !important; gap: 48px; }
+  .feat-grid, .why-grid, .testi-grid, .insights-grid, .props-grid { grid-template-columns: 1fr !important; }
+  .stats-grid, .footer-grid, .modal-stats { grid-template-columns: repeat(2, 1fr) !important; gap: 32px; }
   .props-hero { padding: 120px 22px 48px; }
   .filter-bar { padding: 0 22px; }
   .props-hero-deco { display: none; }
+  .vis-img-wrap { height: 350px !important; }
+}
+
+@media (max-width: 640px) {
+  .hero-h1 { font-size: 42px; }
+  .stats-grid, .footer-grid, .modal-stats { grid-template-columns: 1fr !important; gap: 32px; }
+  .modal-box { width: 95%; padding: 16px; }
+  .modal-body { padding: 24px 16px; }
+  .stat-val { font-size: 38px; }
+  .modal-invest-row { flex-direction: column; align-items: stretch; }
+  .modal-invest-input { width: 100%; }
 }
