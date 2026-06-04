@@ -397,21 +397,17 @@ body {
   animation: fadeUp 1s 1.3s var(--ease) forwards;
 }
 .hscroll-line {
-  width: 1px;
-  height: 50px;
-  background: linear-gradient(to bottom, var(--terra), transparent);
-  animation: sp 2.2s ease-in-out infinite;
+  width: 40px;
+  height: 1.5px;
+  background: var(--muted2);
 }
-@keyframes sp { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
 .hero-scroll span {
   font-family: var(--mono);
   font-size: 10px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--muted2);
-  writing-mode: vertical-rl;
 }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
 /* ── TICKER ── */
 .ticker {
@@ -440,39 +436,77 @@ body {
 .ticker-sep { opacity: 0.35; }
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-/* ── SECTIONS ── */
-.section { padding: 100px 56px; }
+/* ── HELPERS ── */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 56px;
+}
+.section {
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+}
 .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--terra);
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
-.eyebrow::before { content: ''; width: 22px; height: 1.5px; background: var(--terra); display: block; }
+.eyebrow::before {
+  content: '';
+  width: 20px;
+  height: 1.5px;
+  background: var(--terra);
+}
 .section-h {
   font-family: var(--serif);
-  font-size: clamp(34px, 4.5vw, 62px);
+  font-size: clamp(36px, 4vw, 56px);
   font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.025em;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   color: var(--ink);
-  margin-bottom: 20px;
+  margin-bottom: 32px;
 }
-.section-h em { font-style: italic; font-weight: 600; color: var(--terra); }
+.section-h em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--terra);
+}
 .section-lead { font-size: 16px; font-weight: 400; line-height: 1.85; color: var(--muted); max-width: 520px; }
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.72s var(--ease), transform 0.72s var(--ease); }
-.reveal.visible { opacity: 1; transform: none; }
-.reveal-left { opacity: 0; transform: translateX(-28px); transition: opacity 0.72s var(--ease), transform 0.72s var(--ease); }
-.reveal-left.visible { opacity: 1; transform: none; }
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.2s; }
-.delay-3 { transition-delay: 0.3s; }
-.delay-4 { transition-delay: 0.4s; }
+
+/* ── REVEAL ANIMATIONS ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.9s var(--ease);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.9s var(--ease);
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.delay-1 { transition-delay: 0.15s; }
+.delay-2 { transition-delay: 0.3s; }
+.delay-3 { transition-delay: 0.45s; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 .see-all {
   display: inline-flex;
   align-items: center;

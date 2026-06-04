@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
-type Page = 'home' | 'properties'
+type Page = 'home' | 'properties' | 'investments' | 'single-family' | 'about' | 'contact' | 'faq'
 
 interface NavbarProps {
   activePage: Page
@@ -12,6 +12,7 @@ interface NavbarProps {
 
 export default function Navbar({ activePage, onNavigate, onScrollTo }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40)
@@ -19,37 +20,57 @@ export default function Navbar({ activePage, onNavigate, onScrollTo }: NavbarPro
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const handleNav = (page: Page) => {
+    onNavigate(page)
+    setMenuOpen(false)
+  }
+
   return (
     <nav className={`nav${scrolled ? ' scrolled' : ''}`}>
-      <span className="nav-logo" onClick={() => onNavigate('home')}>
+      <span className="nav-logo" onClick={() => handleNav('home')}>
         Rakma<b>.</b>
       </span>
 
-      <ul className="nav-links">
+      <ul className={`nav-links${menuOpen ? ' open' : ''}`}>
         <li>
           <a
             className={activePage === 'home' ? 'active' : ''}
-            onClick={() => onNavigate('home')}
+            onClick={() => handleNav('home')}
           >
             Home
           </a>
         </li>
         <li>
-          <a onClick={() => onScrollTo('vision')}>About</a>
-        </li>
-        <li>
           <a
-            className={activePage === 'properties' ? 'active' : ''}
-            onClick={() => onNavigate('properties')}
+            className={activePage === 'about' ? 'active' : ''}
+            onClick={() => handleNav('about')}
           >
-            Properties
+            About
           </a>
         </li>
         <li>
-          <a onClick={() => onScrollTo('how')}>How it works</a>
+          <a
+            className={activePage === 'investments' ? 'active' : ''}
+            onClick={() => handleNav('investments')}
+          >
+            Investments
+          </a>
         </li>
         <li>
-          <a onClick={() => onScrollTo('insights')}>Insights</a>
+          <a
+            className={activePage === 'faq' ? 'active' : ''}
+            onClick={() => handleNav('faq')}
+          >
+            FAQ
+          </a>
+        </li>
+        <li>
+          <a
+            className={activePage === 'contact' ? 'active' : ''}
+            onClick={() => handleNav('contact')}
+          >
+            Contact
+          </a>
         </li>
       </ul>
 

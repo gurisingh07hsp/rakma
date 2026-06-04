@@ -5,11 +5,17 @@ import VideoIntro from './VideoIntro'
 import Navbar from './Navbar'
 import HomePage from './HomePage'
 import PropertiesPage from './PropertiesPage'
+import InvestmentsPage from './InvestmentsPage'
+import SingleFamilyInvestmentPage from './SingleFamilyInvestmentPage'
+import AboutUsPage from './AboutUsPage'
+import ContactUsPage from './ContactUsPage'
+import FAQPage from './FAQPage'
+import Footer from './Footer'
 import PropertyModal from './PropertyModal'
 import { Property } from '@/lib/data'
 import { useReveal, useCountUp } from './useReveal'
 
-type Page = 'home' | 'properties'
+type Page = 'home' | 'properties' | 'investments' | 'single-family' | 'about' | 'contact' | 'faq'
 
 export default function RakmaApp() {
   const [showIntro, setShowIntro] = useState(true)
@@ -88,15 +94,30 @@ export default function RakmaApp() {
 
       {/* Pages */}
       <main>
-        {activePage === 'home' ? (
+        {activePage === 'home' && (
           <HomePage
             onNavigate={handleNavigate}
             onOpenModal={setSelectedProperty}
           />
-        ) : (
+        )}
+        {activePage === 'properties' && (
           <PropertiesPage onOpenModal={setSelectedProperty} />
         )}
+        {activePage === 'investments' && (
+          <InvestmentsPage onNavigate={handleNavigate} />
+        )}
+        {activePage === 'single-family' && (
+          <SingleFamilyInvestmentPage 
+            onOpenModal={setSelectedProperty} 
+            onNavigate={handleNavigate}
+          />
+        )}
+        {activePage === 'about' && <AboutUsPage />}
+        {activePage === 'contact' && <ContactUsPage />}
+        {activePage === 'faq' && <FAQPage />}
       </main>
+
+      <Footer onNavigate={handleNavigate} />
 
       {/* Property modal */}
       <PropertyModal
