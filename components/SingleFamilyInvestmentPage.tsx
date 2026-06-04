@@ -153,7 +153,7 @@ export default function SingleFamilyInvestmentPage({ onOpenModal, onNavigate }: 
               <PropertyCard
                 key={property.id}
                 property={property}
-                onOpen={() => onOpenModal(property)}
+                onClick={() => onOpenModal(property)}
               />
             ))}
           </div>
